@@ -1,0 +1,12 @@
+const express=require('express')
+const clientController=require('../controllers/clientController')
+const route=express.Router()
+route.post('/login',clientController.authentification)
+route.post('/logout',clientController.logOut)
+route.post('/addClient',clientController.addClient)
+route.get('/getAll',clientController.getAll)
+route.get('/getById/:id' , clientController.getById)
+route.put('/update/:id',clientController.update)
+route.delete('/delete/:id',clientController.delete)
+route.post('/refresh/:id',clientController.refreshToken)
+module.exports=route

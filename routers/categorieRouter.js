@@ -1,0 +1,11 @@
+const categorieController=require('../controllers/categorieController')
+const express=require('express')
+const route=express.Router()
+const file = require('../middelwiares/file')
+route.post('/addCategorie',file.single('image'), categorieController.addCategorie)
+route.get('/getAll', categorieController.getAllcategories)
+route.get('/getbyid/:id', categorieController.getById)
+route.put('/update/:id',file.single('image'), categorieController.updatecat)
+route.delete('/delete/:id', categorieController.deletecategr)
+route.get('/getimage/:file',categorieController.getImage)
+module.exports = route

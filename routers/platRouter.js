@@ -1,0 +1,12 @@
+const multer=require('multer')
+const platController=require('../controllers/platController')
+const express=require('express')
+const route=express.Router()
+const file=require('../middelwiares/file')
+route.get('/getimage/:file',platController.getImage)
+route.post('/addPlat',file.single('image'),platController.addPlat)
+route.get('/getAll',platController.getAll)
+route.get('/get/:id',platController.getById)
+route.put('/update/:id',file.single('image'),platController.update)
+route.delete('/delete/:id',platController.delete)
+module.exports=route
