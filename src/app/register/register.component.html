@@ -1,0 +1,90 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body >
+<div class="container register">
+<div class="row"> 
+<div class="col-md-3 register-left">
+  
+                        <h3>Bienvenue</h3>
+                        
+                        <p class="hello">vous avez un compte déjà! connectez-vous</p>
+                        <input type="submit" name="" routerLink='/' value="Se connecter"/><br/>
+                        
+  </div>
+  <div class="col-md-9 register-right">
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <h3 class="register-heading">Créer un compte</h3>
+      <div class="row register-form">
+  <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+              <div class="form-group col-5">
+                  <label>Nom</label>
+                  <input type="text" formControlName="firstName" [(ngModel)]='userRegister.nom' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="f.firstName.errors.required">le nom est obligatoire</div>
+                  </div>
+              </div>
+              <div class="form-group col-5">
+                  <label>Prénom</label>
+                  <input type="text" formControlName="lastName" [(ngModel)]='userRegister.prenom' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="f.lastName.errors.required">le prénom est obligatoire</div>
+                  </div>
+              </div>
+              <div class="form-group col-5">
+                <label>Téléphone</label>
+                <input type="text" formControlName="phone" [(ngModel)]='userRegister.phone' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors.required">Téléphone est obligatoire</div>
+                </div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Email</label>
+              <input type="text" formControlName="email" [(ngModel)]='userRegister.email' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+                  <div *ngIf="f.email.errors.email">l'email doit être une adresse valide</div>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col">
+                  <label>Mot de passe</label>
+                  <input type="password" formControlName="password" [(ngModel)]='userRegister.password' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">le mot de passe est obligatoire</div>
+                      <div *ngIf="f.password.errors.minlength">au moin six caractéres</div>
+                  </div>
+              </div>
+              <div class="form-group col">
+                  <label>Confirmer mot de passe</label>
+                  <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                  <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required">confirmer mot de passe est obligatoire</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch">tapez le mot de passe de nouveau</div>
+                  </div>
+              </div>
+          </div>
+        <div class="form-group form-check">
+              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+              <label for="acceptTerms" class="form-check-label">Accepter les Terms & Conditions</label>
+              <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accepter Ts & Cs est obligatoire</div>
+          </div>
+          <div class="text-center">
+              <button class="btnRegister" >Registrer</button>
+              <button class="btnRegister" type="reset" (click)="onReset()">Annuler</button>
+          </div>
+      </form>
+  </div>
+</div>
+</div>
+  </div>
+  </div>
+</div>
+</div>
+</body>
+
